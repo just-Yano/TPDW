@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE texte SYSTEM "petit_prince_3IF.dtd">
-<?xml-stylesheet type="text/xsl" href="petit_prince_3IF.xsl"?>
+<!--<?xml-stylesheet type="text/xsl" href="petit-prince.xsl"?>-->
 <texte>
   <the_header>
     <title>LePetitPrince</title>
