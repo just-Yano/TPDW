@@ -12,7 +12,16 @@
 <table  align="center" cellspacing="50">
 <tbody>
 	<tr>
-		<td><img src="../images/prince.png"/></td>
+	   <td>
+	   <div align="center">
+		<img>
+		<xsl:attribute name="src">
+			<xsl:text>../</xsl:text>
+			<xsl:value-of select="//cover/@path"/>	
+		</xsl:attribute>
+		</img>
+	</div>
+	   </td>
 		<td> 
 			<h1 style="text-align:center; color:blue;"><xsl:value-of select="/texte/the_header/title"/></h1> 
 			<h2 style="text-align:center; font-style: italic"><xsl:value-of select="/texte/the_header/author"/></h2>
@@ -20,8 +29,9 @@
 					But du TP du 01/05/201:
 					<xsl:value-of select="/texte/the_header/styling_information/styling_description"/><br/>
 					Auteurs:
-					<xsl:for-each select="/texte/the_header/styling_information/styled_by">
-						<xsl:value-of select="style_manager"/>
+					<xsl:for-each select="//style_manager">
+					<span><xsl:value-of select="."/> </span>
+						
 					</xsl:for-each>
 
 					<br/>Email du responsable:
@@ -33,6 +43,37 @@
 </table>
  <hr/>
 </html> 
+</xsl:template>
+
+<xsl:template match="body">
+	<h3>Début du texte:</h3>
+	<xsl:for-each select= "//paragraph[@type = 'narration']">
+	    <p>
+			<xsl:for-each select="phrase"> 
+			<xsl:choose>
+			<xsl:when test= "@language = 'francais'">
+			<span>
+			<xsl:value-of select="."/>  
+			</span>
+			
+			</xsl:when>
+			
+			
+			<xsl:otherwise>
+			<xsl:if test=". = @language = 'hongrois'[0]">
+			<br/>
+			</xsl:if>
+			<span style="color:red;">
+			<xsl:value-of select="."/>
+			</span>
+			</xsl:otherwise>
+
+			</xsl:choose>
+			</xsl:for-each>
+		</p>
+		
+	</xsl:for-each>
+
 </xsl:template>
 
 
