@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE texte SYSTEM "petit_prince_3IF.dtd">
-<?xml-stylesheet type="text/xsl" href="petit-prince_3IF.xsl"?>
+<?xml-stylesheet type="text/xsl" href="petit_prince_3IF.xsl"?>
 <texte>
   <the_header>
     <title>LePetitPrince</title>
@@ -9,9 +9,9 @@
     <styling_information>
       <styling_description>Traitement d'un texte franco/hongrois avec XPath / XSLT / XQuery</styling_description>
       <styled_by>
-        <style_manager>Moi</style_manager>
-        <style_manager>Mon binome</style_manager>
-        
+        <style_manager>ABI SALEH Adrian</style_manager>
+        <style_manager>BED BOUZID Selim</style_manager>
+        <style_manager>VELOSA Paula</style_manager>
         <NoBinome>B3100</NoBinome>
       </styled_by>
       <email>text</email>
