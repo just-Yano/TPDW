@@ -1,0 +1,70 @@
+1. the author of the formatting :
+    request :
+    //author
+
+    result :
+    Array [ author ]
+
+
+2. Dialogue paragraphs :
+    request :
+    //paragraph[@type = 'dialogue]
+
+    result :
+    Array(11) [ paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, … ]
+    
+3. Phrases in French
+    request :
+    //paragraph/phrase[@language = 'francais']
+
+    result :
+    Array(65) [ phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, … ]
+
+4. The second phrase of each paragraph
+    request :
+    //paragraph/phrase[2]
+
+    result :
+    Array(25) [ phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, … ]
+
+5. The tenth phrase of the text
+    request :
+    (//paragraph/phrase)[10]
+
+    result :
+    Array [ phrase ]
+
+6. The paragraph count
+    request :
+    count(//paragraph)
+
+    result :
+    25 
+
+7. Elements with at least one attribute
+    request :
+    //*[@*]
+
+    result :
+    Array(154) [ cover, link, link, paragraph, phrase, phrase, phrase, phrase, phrase, phrase, … ]
+
+8. Phrases containing the word "mouton"
+    request :
+    //phrase[contains(., 'mouton')]
+
+    result :
+    Array(12) [ phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, phrase, … ]
+
+9. List the modalities of the phrases in the text (without duplicates)
+    request :
+    //@modality[not(. = preceding::phrase/@modality)]
+
+    result :
+    Array(4) [ modality="declarative", modality="exclamative", modality="interrogative", modality="impérative" ]
+
+10. There is an image element among the paragraphs
+    request :
+    count(//paragraph[following::image])+1
+
+    result :
+    21
