@@ -11,7 +11,9 @@
  </head> 
  
  <body style="background-color:white;"> 
- 	<h1 style="text-align:center; color:blue;">LePetitPrince</h1> 
+ 	
+	 <table align="center" cellspacing="50">
+	 <h1 style="text-align:center; color:blue;">LePetitPrince</h1> 
  	<h2 style="text-align:center; font-style: italic">Antoine de Saint-Exupéry</h2>
 	<blockquote style="color: darkgreen;">
 	04/03/2024:
@@ -23,6 +25,7 @@ Auteurs:
 Email du responsable:
                   text
 </blockquote>
+	</table>
  </body> 
 </html> 
 
