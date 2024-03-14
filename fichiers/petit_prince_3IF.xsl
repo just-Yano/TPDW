@@ -1,62 +1,81 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="html"/> 
+	<?xml version = "1.0" encoding = "UTF-8"?>
+	<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:output method="html"/> 
 
-<xsl:template match="/texte/the_header"> 
-<html> 
- <head> 
- 	<title> 
- 		<xsl:value-of select="/texte/the_header/title"/> 
- 	</title> 
- </head> 
-<table  align="center" cellspacing="50">
-	<tbody>
-		<tr>
-			<td>
-				<img>
-					<xsl:attribute name="src">
-						<xsl:text>../</xsl:text>
-						<xsl:value-of select="/texte/the_header/cover/@path"/>
-					</xsl:attribute>
-				</img>
-			</td>
-			<td> 
-				<h1 style="text-align:center; color:blue;"><xsl:value-of select="/texte/the_header/title"/></h1> 
-				<h2 style="text-align:center; font-style: italic"><xsl:value-of select="/texte/the_header/author"/></h2>
-				<blockquote style="color: darkgreen;">
-						But du TP du 01/05/201:
-						<xsl:value-of select="/texte/the_header/styling_information/styling_description"/><br/>
-						Auteurs:
-						<xsl:for-each select="/texte/the_header/styling_information/styled_by/style_manager">
-							<xsl:value-of select="."/>
-							<xsl:text> </xsl:text>
-						</xsl:for-each>
+	<xsl:template match="/texte/the_header"> 
+	<html> 
+	<head> 
+		<title> 
+			<xsl:value-of select="/texte/the_header/title"/> 
+		</title> 
+	</head> 
+	<body>
 
-						<br/>Email du responsable:
-						text
-				</blockquote>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<hr/>
-</html> 
-</xsl:template>
+	<table  align="center" cellspacing="50">
+		<tbody>
+			<tr>
+				<td>
+					<img>
+						<xsl:attribute name="src">
+							<xsl:text>../</xsl:text>
+							<xsl:value-of select="/texte/the_header/cover/@path"/>
+						</xsl:attribute>
+					</img>
+				</td>
+				<td> 
+					<h1 style="text-align:center; color:blue;"><xsl:value-of select="/texte/the_header/title"/></h1> 
+					<h2 style="text-align:center; font-style: italic"><xsl:value-of select="/texte/the_header/author"/></h2>
+					<blockquote style="color: darkgreen;">
+							But du TP du 01/05/201:
+							<xsl:value-of select="/texte/the_header/styling_information/styling_description"/><br/>
+							Auteurs:
+							<xsl:for-each select="/texte/the_header/styling_information/styled_by/style_manager">
+								<xsl:value-of select="."/>
+								<xsl:text> </xsl:text>
+							</xsl:for-each>
+							<xsl:text>(</xsl:text> <xsl:value-of select="//NoBinome"/> <xsl:text>)</xsl:text>
 
-<xsl:template match="//paragraph/@narration">
-	<xsl:if test="@language = 'francais'">
-		<xsl:apply-template match="//phrase[@language ='francais']">
-</xsl:template>
+							<br/>Email du responsable:
+							text
+					</blockquote>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr/>
+	<xsl:apply-templates select="//body"/>
+	</body>
+	</html> 
+	</xsl:template>
 
-<xsl:template match="//phrase[@language ='hongrois']">
-		<span style="font-style: italic; color: brown;">
-			<xsl:value-of select="."/>
-		</span>
+	<xsl:template match="//body">
+			<h3> Début du texte : </h3>
+			<xsl:apply-templates select="./paragraph"/>
+	</xsl:template>
+
+	<xsl:template match="//paragraph[./@type = 'narration']">
+		<div style="margin: 15px 0">
+			<p style="margin: 0 0">
+				<xsl:for-each select="phrase[@language = 'francais']">
+					<xsl:value-of select="."/>
+				</xsl:for-each>
+			</p>
+			<p style="font-style: italic; color: brown; margin: 0 0">
+				<xsl:for-each select="phrase[@language = 'hongrois']">
+					<xsl:value-of select="."/>
+				</xsl:for-each>
+			</p>
+		</div>
+	</xsl:template>
+
+	<xsl:template match="//paragraph[./@type = 'dialogue']">
+		<table>
+			<tbody>
+			</tbody>
+		</table>
 	</xsl:template>
 
 
 
 
-
-
-</xsl:stylesheet>
+	</xsl:stylesheet>
