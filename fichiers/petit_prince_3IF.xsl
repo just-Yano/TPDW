@@ -1,4 +1,4 @@
-	<?xml version = "1.0" encoding = "UTF-8"?>
+<?xml version = "1.0" encoding = "UTF-8"?>
 	<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html"/> 
 
@@ -53,7 +53,7 @@
 			<xsl:apply-templates select="./paragraph"/>
 	</xsl:template>
 
-	<xsl:template match="//paragraph[./@type = 'narration']">
+	<xsl:template match="//paragraph">
 		<div style="margin: 15px 0">
 			<p style="margin: 0 0">
 				<xsl:for-each select="phrase[@language = 'francais']">
@@ -69,8 +69,25 @@
 	</xsl:template>
 
 	<xsl:template match="//paragraph[./@type = 'dialogue']">
-		<table>
+		<table style="align: center; width:90%">
 			<tbody>
+				<tr>
+					<td style="width: 45%"> 
+						<table style="border: 1; cellpadding: 10; width: 100%">
+							<tbody>
+								<xsl:for-each select="./phrase">
+									<tr>
+										<td>
+											<span style="font-size: 24; font-weight: bold;"> 
+												<xsl:value-of select="."/>	
+											</span>
+										</td>
+									</tr>
+								</xsl:for-each>
+							</tbody>
+						</table>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</xsl:template>
