@@ -10,11 +10,34 @@
     <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Changer couleur font en bleu</button>
     <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Changer couleur font en blanc</button>
     <div>
-        <input type = "text" oninput="chargerPays()">
-
+        <input id = "countryCodeTextBox" type = "text" oninput="chargerPays()">
     </div>
+    <div id = "ImageCercle">
+        <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Afficher l'image</button>
+    </div>
+
     <div>
-        <img src="../fichiers/ajax/exemple.svg"/>
+        <table style = "border: 1px solid black; width: 100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Capital</th>
+                    <th>Languages Spoken</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id = "NameCountry">  </td>
+                    <td id = "CapitalCountry">  </td>
+                    <td id = "LanguagesCountry"> </td>
+                    <td id = "FlagCountry"> </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id = "worldMap">
+           <button onclick="chargerImage2SVG()">Load World Maps</button> <!-- le button est remplace par la map-->
+        </div>
     </div>
 </body>
 </html>

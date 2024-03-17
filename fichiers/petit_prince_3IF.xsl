@@ -68,29 +68,18 @@
 		</div>
 	</xsl:template>
 
-	<xsl:template match="//paragraph[./@type = 'dialogue']">
-		<table style="align: center; width:90%">
-			<tbody>
-				<tr>
-					<td style="width: 45%"> 
-						<table style="border: 1; cellpadding: 10; width: 100%">
-							<tbody>
-								<xsl:for-each select="./phrase">
-									<tr>
-										<td>
-											<span style="font-size: 24; font-weight: bold;"> 
-												<xsl:value-of select="."/>	
-											</span>
-										</td>
-									</tr>
-								</xsl:for-each>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</xsl:template>
+<xsl:template match="//paragraph[@type = 'dialogue']">
+    <table style="border: 1px solid black; width: 100%">
+        <tr>
+            <xsl:for-each select="phrase">
+                <td style="border: 1px solid black; padding: 5px;">
+                    <xsl:value-of select="."/>
+                </td>
+            </xsl:for-each>
+        </tr>
+    </table>
+</xsl:template>
+
 
 
 
