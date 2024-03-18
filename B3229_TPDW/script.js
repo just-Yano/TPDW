@@ -67,17 +67,18 @@ function chargerImage1SVG() {
     var str = serializer.serializeToString(xmlDoc);
     var button = document.getElementById('ImageCercle')
     button.innerHTML = str
+}
 
-    // Question 5
-    // on retrouve tous les elements du fichier SVG
+// Question 5
+function rendreSVG1cliquable() {
     var elements = document.querySelectorAll('#lesFormes g *')
-    elements.forEach(function(elem){
-        elem.addEventListener("click", function(){
-            var child = document.createElement('p')
-            child.textContent = elem.getAttribute('title')
-            document.getElementById('ImageCercle').appendChild(child)
+
+    for(var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("click", function() {
+            console.log(this.getAttribute('title'))
+            document.getElementById('titreObjetImage').innerHTML = this.getAttribute('title')
         })
-    })
+    }
 }
 
 // Question 6

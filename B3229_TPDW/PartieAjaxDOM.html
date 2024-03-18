@@ -7,8 +7,14 @@
     <script src="./script.js"></script>
 </head>
 <body> 
-    <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Changer couleur font en bleu</button>
-    <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Changer couleur font en blanc</button>
+    <div>
+        <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Button 1</button>
+    </div>
+
+    <div>
+        <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Button 2</button>
+    </div>
+
     <div>
         <datalist id = "DataList"></datalist>
         <input id = "countryCodeTextBox" list ="DataList" type = "text"/>
@@ -21,8 +27,15 @@
             <span id = "capitalePays"> Infos sur le pays </span>
         </p>
     </div>
-    <div id = "ImageCercle">
-        <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Afficher l'image</button>
+
+    <div>
+        <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Button 4</button>
+        <div id = "ImageCercle"></div>
+        <p id = "titreObjetImage"></p>
+    </div>
+
+    <div>
+        <button id = "rendreSVG_cliquable" onclick="rendreSVG1cliquable()">Button 5</button>
     </div>
 
     <div id = "worldMap">
