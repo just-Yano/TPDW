@@ -7,56 +7,88 @@
     <script src="./script.js"></script>
 </head>
 <body> 
+    <!-- Bouton de la question 1 -->
     <div>
         <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Button 1</button>
     </div>
 
+    <!-- Bouton de la question 2 -->
     <div>
+        
         <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Button 2</button>
     </div>
 
+    <!-- Division de la partie de recherche du pays par code (question 3 + question 9) -->
     <div>
-        <datalist id = "DataList"></datalist>
+        <!-- Question 3 -->
         <input id = "countryCodeTextBox" list ="DataList" type = "text"/>
         <button id = "buttonCodeCountry" onclick="chargerPays('countriesTP.xml', 'cherchePays.xsl', 'element_a_recuperer', document.getElementById('countryCodeTextBox').value, 'capitalePays')">Rechercer le pays</button>
         <br/>
+
+        <!-- Question 9 -->
+        <datalist id = "DataList"></datalist>
         <button id = "ActiveAutocompletion" onclick="autocompletion()"> Activer l'autocompletion</button>
         <button id = "DesactiverAutocompletion" onclick="offautocompletion()"> Désactiver l'autocomplétion</button>
-        <p>
+        <!-- Fin Question 9 -->
 
+        <!-- Question 3 -->
+        <p>
             Pays et capitale :<br/>
             <span id = "capitalePays"> Infos sur le pays </span>
         </p>
     </div>
 
+
+    <!-- Question 4 -->
     <div>
         <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Button 4</button>
         <div id = "ImageCercle"></div>
         <p id = "titreObjetImage"></p>
     </div>
 
+
+    <!-- Question 5 -->
     <div>
         <button id = "rendreSVG_cliquable" onclick="rendreSVG1cliquable()">Button 5</button>
     </div>
 
+
+    <!-- Question 6 -->
     <div id = "worldMap">
-        <div id = "tableauInfo">vdwqedqwed</div>
+
+
+
+        <div id = "tableauInfo">vdwqedqwed</div>  <!-- Pas partie de la question 6, seulement le tableau d'affichage -->
+                                                    <!-- des infos sur les pays de la question 8 -->
+
+
+
         <div id = "worldMapImage">
            <button onclick="chargerImage2SVG()">Button 6</button> <!-- le button est remplace par la map-->
         </div>
-        <button onclick="countryclickable()">Activate the clickabilty of the countries</button>
-        <div>
-            Country clicked :<br/>
-            <b id ="CountryClicked"></b>
-        </div>
     </div>
 
-    <button onclick="activateCountryHover()">Button 8</button>
 
+
+    
+
+    <!-- Question 7 -->
     <div>
-        <button id = "buttonLoadImage" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le random pays</button>
-        Veuilliez cliquer sur <b id="random_pays">
-        </b>
+        <button onclick="countryclickable()">Activate the clickabilty of the countries</button>
+        Country clicked :<br/>
+        <b id ="CountryClicked"></b>
+    </div>
+
+    <!-- Question 8 -->
+    <div>
+        <button onclick="activateCountryHover()">Button 8</button>
+    </div>
+
+    <!-- Question 12 -->
+    <div>
+        <button id = "RandomCountryButton" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le random pays</button>
+        Veuilliez cliquer sur <b id="random_pays">Pays à générer</b>
+        <br/>
         Resultat :<br/>
         <b id = "resultatrandompays"></b>
     </div>

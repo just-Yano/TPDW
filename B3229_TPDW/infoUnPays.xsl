@@ -6,9 +6,11 @@
 	
 	<xsl:template match="/">
 		<html>	
-            <element_a_recuperer>
-                <xsl:apply-templates select="//country[country_codes/cca2 = $code]"/>
-            </element_a_recuperer>
+            <body>
+                <element_a_recuperer>
+                    <xsl:apply-templates select="//country[country_codes/cca2 = $code]"/>
+                </element_a_recuperer>
+            </body>
 		</html>
 	</xsl:template>
 
@@ -22,8 +24,12 @@
             </tr>
             <tr>
                 <td> <xsl:value-of select = "./country_name/common_name"/> </td>
-                <td> <xsl:value-of select = "./captial"/> </td>
-                <td> <xsl:value-of select = "./country_name/common_name"/> </td>
+                <td> <xsl:value-of select = "./capital"/> </td>
+                <td>
+                    <xsl:for-each select = "./languages/*">
+                    <xsl:value-of select = "."/><br/>
+                    </xsl:for-each>
+                </td>
                 <td> <xsl:value-of select = "./country_name/common_name"/> </td>
             </tr>
         </table>

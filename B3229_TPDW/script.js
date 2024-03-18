@@ -120,8 +120,8 @@ function activateCountryHover() {
 
         // activation de l'affichage du tableau lorsqu'un pays a ete clique
         // pour cela on utilise la fonction qui a ete cree pour le button 3, avec les bon parametres
-        elements[i].addEventListener("click", function() {
-            chargerPays('countriesTP.xml', 'infoUnPays.xsl', 'element_a_recuperer', this.getAttribute('id').value, 'tableauInfo')
+        elements[i].addEventListener("mouseover", function() {
+            chargerPays('countriesTP.xml', 'infoUnPays.xsl', 'element_a_recuperer', this.getAttribute('id'), 'tableauInfo')
         })
     }
 }
@@ -162,8 +162,7 @@ function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
     var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
     var elementHtmlARemplacer = window.document.getElementById("random_pays");
     elementHtmlARemplacer.innerHTML=newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML;
-    console.log(newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML);
-
+    
 
     var elements = document.querySelectorAll('svg g path')
 

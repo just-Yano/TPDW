@@ -6,6 +6,7 @@
 <xsl:template match = "/">
 <html>
     <body>
+        
         <element_a_recuperer>
             <ul>
                 <xsl:apply-templates select = "//country[country_codes/cca2 = $code]"/>
