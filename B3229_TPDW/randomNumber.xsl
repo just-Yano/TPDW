@@ -11,7 +11,7 @@
 				<H1>Bibliographie</H1>
 				<element_a_recuperer>
 					<ul><!-- on cherche les références bibliographiques dont la balise contient la valeur du paramètre-->
-						<xsl:apply-templates select="//country[position = $random_number]"/>
+						<xsl:apply-templates select="//country[position() = $random_number]"/>
 					</ul>
 				</element_a_recuperer>
 			</BODY>

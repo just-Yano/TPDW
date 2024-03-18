@@ -114,12 +114,12 @@ function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
     var xslDocument = chargerHttpXML(xslDocumentUrl);
     var xsltProcessor = new XSLTProcessor();
     xsltProcessor.importStylesheet(xslDocument);
-    var randomNumber = Math.floor(Math.random()*99);
+    var randomNumber = Math.floor(Math.random()*99)+1;
     xsltProcessor.setParameter("", "random_number",randomNumber);
     var xmlDocument = chargerHttpXML(xmlDocumentUrl);
     var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
     var elementHtmlARemplacer = window.document.getElementById("random_pays");
-    elementHtmlARemplacer.innerHTML=newXmlDocument.randomNumber;
+    elementHtmlARemplacer.innerHTML=newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML;;
 
     
 }
