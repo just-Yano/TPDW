@@ -87,20 +87,23 @@ function chargerImage2SVG() {
     var xmlDoc = chargerHttpXML('../fichiers/ajax/worldHigh.svg')
     var serializer = new XMLSerializer();
     var str = serializer.serializeToString(xmlDoc);
-    var button = document.getElementById('worldMap')
+    var button = document.getElementById('worldMapImage')
     button.innerHTML = str
 
     // Question 7
     // on retrouve tous les elements du fichier SVG
     var elements = document.querySelectorAll('svg g path')
+    var countryname; // variable utilise pour sauvegarder le pays qui a ete clique
     elements.forEach(function(elem){
         elem.addEventListener("click", function(){
             var child = document.createElement('p')
-            child.textContent = elem.getAttribute('id') // TODO remplacer par countryName
-            document.getElementById('worldMap').appendChild(child)
+            countryname = elem.getAttribute('countryname') // va etre utilise dans la question 8
+            child.textContent = countryname
+            loadData(countryname) // function utilise pour charger les donees du pays qui a ete clique dans le tableau
+            document.getElementById('worldMapImage').appendChild(child)
         })
 
-        // Question 8 TODO faire la table en haut
+        // Question 8 
         elem.addEventListener("mouseover", function(event) {
             elem.setAttribute('style', 'fill:red')  
         })
@@ -111,4 +114,19 @@ function chargerImage2SVG() {
     })
 }
 
+function loadData(countryname) {
+    var xslDocument = chargerHttpXML('./infoUnPays.xsl');
+
+    var xsltProcessor = new XSLTProcessor()
+    xsltProcessor.importStylesheet(xslDocument)
+    xsltProcessor.setParameter("", "countryName",countryname);
+    
+    var xmlDocument = chargerHttpXML('../fichiers/ajax/countriesTP.xml');
+
+    var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
+
+    var elementHtmlParent = window.document.getElementById("tableauInfo");
+    
+    elementHtmlParent.innerHTML=newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML;
+}
 
