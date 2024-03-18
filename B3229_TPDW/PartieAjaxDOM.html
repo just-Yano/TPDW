@@ -43,12 +43,21 @@
         <div id = "worldMapImage">
            <button onclick="chargerImage2SVG()">Load World Maps</button> <!-- le button est remplace par la map-->
         </div>
+        <button onclick="countryclickable()">Activate the clickabilty of the countries</button>
+        <div>
+            Country clicked :<br/>
+            <b id ="CountryClicked"></b>
+        </div>
     </div>
+
+    <button onclick="activatepassing()">Activation du passage de la souris</button>
 
     <div>
         <button id = "buttonLoadImage" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le random pays</button>
         Veuilliez cliquer sur <b id="random_pays">
         </b>
+        Resultat :<br/>
+        <b id = "resultatrandompays"></b>
     </div>
 
 
