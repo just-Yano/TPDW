@@ -8,7 +8,7 @@
     <body>
         <element_a_recuperer>
             <ul>
-                <xsl:apply-templates select = "//country[country_codes/cca3 = $code]"/>
+                <xsl:apply-templates select = "//country[country_codes/cca2 = $code]"/>
             </ul>
         </element_a_recuperer>
     </body>

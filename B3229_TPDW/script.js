@@ -7,6 +7,8 @@ function changerCouleurFontButton1() {
 // Question 2
 function changerCouleurFontButton2() {
     document.body.style.backgroundColor = "white"
+    document.getElementById("buttonCouleurFontBleu").style.color = ""
+
 }
 
 
@@ -160,14 +162,15 @@ function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
     var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
     var elementHtmlARemplacer = window.document.getElementById("random_pays");
     elementHtmlARemplacer.innerHTML=newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML;
+    console.log(newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML);
 
 
-    var elements = document.querySelectorAll('#lesFormes g *')
+    var elements = document.querySelectorAll('svg g path')
 
     for(var i = 0; i < elements.length; i++) {
         elements[i].addEventListener("click", function() {
             var name = this.getAttribute('countryname');
-            if (name == newXmlDocument.getElementsByTagName('element_a_recuperer')[0]){
+            if (name == newXmlDocument.querySelectorAll("element_a_recuperer")[0].innerHTML){
                 document.getElementById("resultatrandompays").innerHTML = "<span> Gagné! </span>";
             }
             else {
