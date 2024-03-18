@@ -2,31 +2,40 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
     <title>TP 3IF Ajax</title>
-    <meta name="author" content="Elöd EGYED-ZSIGMOND">
+    <meta name="author" content="Elï¿½d EGYED-ZSIGMOND">
     <script type="text/javascript" src="partieJavascript.js"></script>
   </head>
   <body>
     <p>File to modify/complete.</p>
-    <p><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
-          class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
-              class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+    <p><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+
+          class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+
+              class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+
                   class="">The first button below calls the Javascript function
                   <code>setName</code> modifying the content of a tag <code>&lt;span
                     id="id_nom_a_remplacer"&gt; </code>based on the content of
                   the text field located next to it, having the identifier <code>myText1</code>.</font></font></font></font></font></font></p>
     <p>Replaces the text "LES NOMS" with the content of the input field: <br>
-      <input name="button" id="myButton1" onclick="setName(document.getElementById('myText1').value);"
-value="1. Simple AJAX" type="button"> <input name="text" id="myText1" value="Toto"
+      <input name="button" id="myButton1" onclick="setName(document.getElementById('myText1').value);"
+
+value="1. Simple AJAX" type="button"> <input name="text" id="myText1" value="Toto"
+
         type="text"> <br>
       <br>
       Load the Employees.xml file using AJAX, search for content in JavaScript,
       and replace the text "LES NOMS" with the result. <br>
-      <input name="button2" id="myButton2" onclick="Bouton2_ajaxEmployees('Employees.xml');"
+      <input name="button2" id="myButton2" onclick="Bouton2_ajaxEmployees('Employees.xml');"
+
 value="2. AJAX with Employees.xml" type="button"> <br>
       <br>
-      <font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
-          class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
-              class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+      <font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+
+          class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+
+              class=""><font style="vertical-align: inherit;" class=""><font style="vertical-align: inherit;"
+
                   class="">The third button uses a more complex function by
                   loading the sample files <code>ajax.bib.xml </code>and <code>ajax.bib.xsl</code>,
                   applying the style sheet to the XML file, and extracting an
@@ -36,7 +45,8 @@ value="2. AJAX with Employees.xml" type="button"> <br>
     <p>Load an XML file containing bibliographic references, a style sheet,
       apply the style sheet to the XML file, and display the result at the
       bottom of the page. <br>
-      <input name="button3" id="myButton2" onclick="Bouton3_ajaxBibliographie('ajax.bib.xml','ajax.bib.xsl','element_a_recuperer');"
+      <input name="button3" id="myButton2" onclick="Bouton3_ajaxBibliographie('ajax.bib.xml','ajax.bib.xsl','element_a_recuperer');"
+
 value="3. AJAX with ajax.bib.xml/ajax.bib.xsl for books (Book)" type="button"> <br>
       <br>
       Load an XML file containing bibliographic references, a style sheet,
@@ -50,7 +60,8 @@ value="3. AJAX with ajax.bib.xml/ajax.bib.xsl for books (Book)" type="button"> <
         <option value="Proceedings">Article in conference</option>
       </select>
       <br>
-      <input name="button4" id="myButton4" onclick="Bouton4_ajaxBibliographieAvecParametres('ajax.bib.xml','ajax.bibParam.xsl','element_a_recuperer', document.getElementById('type_bibliographic_references').value);"
+      <input name="button4" id="myButton4" onclick="Bouton4_ajaxBibliographieAvecParametres('ajax.bib.xml','ajax.bibParam.xsl','element_a_recuperer', document.getElementById('type_bibliographic_references').value);"
+
 value="4. AJAX with ajax.bib.xml/ajax.bibParam.xsl and a parameter" type="button">
     </p>
     <div>

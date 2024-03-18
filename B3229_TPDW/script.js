@@ -81,3 +81,20 @@ function chargerImage2SVG() {
 }
 
 
+
+
+//Question 12
+
+function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
+    var xslDocument = chargerHttpXML(xslDocumentUrl);
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xslDocument);
+    var randomNumber = Math.floor(Math.random()*99);
+    xsltProcessor.setParameter("", "random_number",randomNumber);
+    var xmlDocument = chargerHttpXML(xmlDocumentUrl);
+    var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
+    var elementHtmlARemplacer = window.document.getElementById("random_pays");
+    elementHtmlARemplacer.innerHTML=newXmlDocument.randomNumber;
+
+    
+}
