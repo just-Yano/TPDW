@@ -9,6 +9,37 @@ function changerCouleurFontButton2() {
     document.body.style.backgroundColor = "white"
 }
 
+
+// Question 3
+function chargerPays(xmlDocumentUrl, xslDocumentUrl, baliseElementARecuperer, paramXSL_type_reference, idBaliseModifier) {
+
+    // Chargement du fichier XSL � l'aide de XMLHttpRequest synchrone 
+    var xslDocument = chargerHttpXML(xslDocumentUrl);
+
+	//cr�ation d'un processuer XSL
+    var xsltProcessor = new XSLTProcessor();
+
+    // Importation du .xsl
+    xsltProcessor.importStylesheet(xslDocument);
+	
+	//passage du param�tre � la feuille de style
+	xsltProcessor.setParameter("", "code",paramXSL_type_reference);
+
+    // Chargement du fichier XML � l'aide de XMLHttpRequest synchrone 
+    var xmlDocument = chargerHttpXML(xmlDocumentUrl);
+
+    // Cr�ation du document XML transform� par le XSL
+    var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
+
+    // Recherche du parent (dont l'id est "here") de l'�l�ment � remplacer dans le document HTML courant
+    var elementHtmlParent = window.document.getElementById(idBaliseModifier);
+    
+	// ins�rer l'�lement transform� dans la page html
+    elementHtmlParent.innerHTML=newXmlDocument.getElementsByTagName(baliseElementARecuperer)[0].innerHTML;
+	
+
+}
+
 // fonction pour faire une requete HTTP(AJAX)
 function chargerHttpXML(xmlDocumentUrl) {
 
@@ -28,8 +59,6 @@ function chargerHttpXML(xmlDocumentUrl) {
 
     return httpAjax.responseXML;
 }
-
-// Question 3
 
 // Question 4
 function chargerImage1SVG() {
@@ -56,20 +85,16 @@ function chargerImage2SVG() {
     var xmlDoc = chargerHttpXML('../fichiers/ajax/worldHigh.svg')
     var serializer = new XMLSerializer();
     var str = serializer.serializeToString(xmlDoc);
-    var button = document.getElementById('worldMap')
+    var button = document.getElementById('worldMapImage')
     button.innerHTML = str
 
     // Question 7
     // on retrouve tous les elements du fichier SVG
     var elements = document.querySelectorAll('svg g path')
+    var countryname; // variable utilise pour sauvegarder le pays qui a ete clique
     elements.forEach(function(elem){
-        elem.addEventListener("click", function(){
-            var child = document.createElement('p')
-            child.textContent = elem.getAttribute('id') // TODO remplacer par countryName
-            document.getElementById('worldMap').appendChild(child)
-        })
-
-        // Question 8 TODO faire la table en haut
+        elem.addEventListener("click", chargerPays('countriesTP.xml', 'infoUnPays.xsl', 'element_a_recuperer', elem.getAttribute('countryname'), 'tableauInfo'))
+        // Question 8 
         elem.addEventListener("mouseover", function(event) {
             elem.setAttribute('style', 'fill:red')  
         })
