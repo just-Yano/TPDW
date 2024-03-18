@@ -142,14 +142,20 @@ function autocompletion(){
 }
 
 // Question 11
-// function afficherPaysVertLangue() {
-//     // on retrouve le code du pays qui a ete clique
-//     var codePays = this.getAttribute('id')
-//     var XMLDoc = chargerHttpXML('countriesTP.xml') // chargement du fichier des pays
-//     var xpathExpr = '//countries'
-//     var langues = XMLDoc.evaluate(xpathExpr, XMLDoc, null, XPathResult.ANY_TYPE, null);
+function afficherPaysVertLangue() {
+    // ajouter un nouveau eventlistener aux pays
+    var elements = document.querySelectorAll('svg g path');
 
-// }
+    for(let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("click", function() {
+            var codePays = this.getAttribute('id')
+            var XMLDoc = chargerHttpXML('countriesTP.xml') // chargement du fichier des pays
+            var xpathExpr = "//country[country_codes/cca2 = '" + codePays + "']/languages/*"
+            var langues = XMLDoc.evaluate(xpathExpr, XMLDoc, null, XPathResult.ANY_TYPE, null);
+            console.log(langues)
+        })
+    }
+}
 
 //Question 12
 function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
