@@ -7,7 +7,7 @@
 	<xsl:template match="/">
 		<html>	
             <element_a_recuperer>
-                <xsl:apply-templates select="//country/[country_name/common_name = $countryName]"/>
+                <xsl:apply-templates select="//country[country_name/common_name = $countryName]"/>
             </element_a_recuperer>
 		</html>
 	</xsl:template>
@@ -21,10 +21,10 @@
                 <th> Flag </th>
             </tr>
             <tr>
-                <td> <xsl:valueof select = "./country_name/common_name"/> </td>
-                <td> <xsl:valueof select = "./captial"/> </td>
-                <td> <xsl:valueof select = "./country_name/common_name"/> </td>
-                <td> <xsl:valueof select = "./country_name/common_name"/> </td>
+                <td> <xsl:value-of select = "./country_name/common_name"/> </td>
+                <td> <xsl:value-of select = "./captial"/> </td>
+                <td> <xsl:value-of select = "./country_name/common_name"/> </td>
+                <td> <xsl:value-of select = "./country_name/common_name"/> </td>
             </tr>
         </table>
 	</xsl:template>

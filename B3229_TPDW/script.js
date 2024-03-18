@@ -11,7 +11,7 @@ function changerCouleurFontButton2() {
 
 
 // Question 3
-function chargerPays(xmlDocumentUrl, xslDocumentUrl, baliseElementARecuperer, paramXSL_type_reference) {
+function chargerPays(xmlDocumentUrl, xslDocumentUrl, baliseElementARecuperer, paramXSL_type_reference, idBaliseModifier) {
 
     // Chargement du fichier XSL � l'aide de XMLHttpRequest synchrone 
     var xslDocument = chargerHttpXML(xslDocumentUrl);
@@ -32,7 +32,7 @@ function chargerPays(xmlDocumentUrl, xslDocumentUrl, baliseElementARecuperer, pa
     var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
 
     // Recherche du parent (dont l'id est "here") de l'�l�ment � remplacer dans le document HTML courant
-    var elementHtmlParent = window.document.getElementById("id_element_a_remplacer");
+    var elementHtmlParent = window.document.getElementById(idBaliseModifier);
     
 	// ins�rer l'�lement transform� dans la page html
     elementHtmlParent.innerHTML=newXmlDocument.getElementsByTagName(baliseElementARecuperer)[0].innerHTML;
@@ -59,8 +59,6 @@ function chargerHttpXML(xmlDocumentUrl) {
 
     return httpAjax.responseXML;
 }
-
-// Question 3
 
 // Question 4
 function chargerImage1SVG() {
@@ -95,14 +93,7 @@ function chargerImage2SVG() {
     var elements = document.querySelectorAll('svg g path')
     var countryname; // variable utilise pour sauvegarder le pays qui a ete clique
     elements.forEach(function(elem){
-        elem.addEventListener("click", function(){
-            var child = document.createElement('p')
-            countryname = elem.getAttribute('countryname') // va etre utilise dans la question 8
-            child.textContent = countryname
-            loadData(countryname) // function utilise pour charger les donees du pays qui a ete clique dans le tableau
-            document.getElementById('worldMapImage').appendChild(child)
-        })
-
+        elem.addEventListener("click", chargerPays('countriesTP.xml', 'infoUnPays.xsl', 'element_a_recuperer', elem.getAttribute('countryname'), 'tableauInfo'))
         // Question 8 
         elem.addEventListener("mouseover", function(event) {
             elem.setAttribute('style', 'fill:red')  
@@ -114,19 +105,4 @@ function chargerImage2SVG() {
     })
 }
 
-function loadData(countryname) {
-    var xslDocument = chargerHttpXML('./infoUnPays.xsl');
-
-    var xsltProcessor = new XSLTProcessor()
-    xsltProcessor.importStylesheet(xslDocument)
-    xsltProcessor.setParameter("", "countryName",countryname);
-    
-    var xmlDocument = chargerHttpXML('../fichiers/ajax/countriesTP.xml');
-
-    var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
-
-    var elementHtmlParent = window.document.getElementById("tableauInfo");
-    
-    elementHtmlParent.innerHTML=newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML;
-}
 
