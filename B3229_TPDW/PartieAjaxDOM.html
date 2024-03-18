@@ -10,7 +10,12 @@
     <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Changer couleur font en bleu</button>
     <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Changer couleur font en blanc</button>
     <div>
-        <input id = "countryCodeTextBox" type = "text" oninput="chargerPays()">
+        <input id = "countryCodeTextBox" type = "text"/>
+        <button id = "buttonCodeCountry" onclick="chargerPays('countriesTP.xml', 'cherchePays.xsl', 'element_a_recuperer', document.getElementById('countryCodeTextBox').value )">Rechercer le pays</button>
+        <p>
+            Pays et capitale :<br/>
+            <span id = "id_element_a_remplacer"> Infos sur le pays </span>
+        </p>
     </div>
     <div id = "ImageCercle">
         <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Afficher l'image</button>

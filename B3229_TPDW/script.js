@@ -9,6 +9,37 @@ function changerCouleurFontButton2() {
     document.body.style.backgroundColor = "white"
 }
 
+
+// Question 3
+function chargerPays(xmlDocumentUrl, xslDocumentUrl, baliseElementARecuperer, paramXSL_type_reference) {
+
+    // Chargement du fichier XSL � l'aide de XMLHttpRequest synchrone 
+    var xslDocument = chargerHttpXML(xslDocumentUrl);
+
+	//cr�ation d'un processuer XSL
+    var xsltProcessor = new XSLTProcessor();
+
+    // Importation du .xsl
+    xsltProcessor.importStylesheet(xslDocument);
+	
+	//passage du param�tre � la feuille de style
+	xsltProcessor.setParameter("", "code",paramXSL_type_reference);
+
+    // Chargement du fichier XML � l'aide de XMLHttpRequest synchrone 
+    var xmlDocument = chargerHttpXML(xmlDocumentUrl);
+
+    // Cr�ation du document XML transform� par le XSL
+    var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
+
+    // Recherche du parent (dont l'id est "here") de l'�l�ment � remplacer dans le document HTML courant
+    var elementHtmlParent = window.document.getElementById("id_element_a_remplacer");
+    
+	// ins�rer l'�lement transform� dans la page html
+    elementHtmlParent.innerHTML=newXmlDocument.getElementsByTagName(baliseElementARecuperer)[0].innerHTML;
+	
+
+}
+
 // fonction pour faire une requete HTTP(AJAX)
 function chargerHttpXML(xmlDocumentUrl) {
 
