@@ -10,8 +10,12 @@
     <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Changer couleur font en bleu</button>
     <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Changer couleur font en blanc</button>
     <div>
-        <input id = "countryCodeTextBox" type = "text"/>
+        <datalist id = "DataList"></datalist>
+        <input id = "countryCodeTextBox" list ="DataList" type = "text"/>
         <button id = "buttonCodeCountry" onclick="chargerPays('countriesTP.xml', 'cherchePays.xsl', 'element_a_recuperer', document.getElementById('countryCodeTextBox').value, 'capitalePays')">Rechercer le pays</button>
+        <br/>
+        <button id = "ActiveAutocompletion" onclick="autocompletion()"> Activer l'autocompletion</button>
+        <button id = "DesactiverAutocompletion" onclick="offautocompletion()"> Désactiver l'autocomplétion</button>
         <p>
             Pays et capitale :<br/>
             <span id = "capitalePays"> Infos sur le pays </span>
@@ -28,10 +32,13 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div>
         <button id = "buttonLoadImage" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le random pays</button>
         Veuilliez cliquer sur <b id="random_pays">
         </b>
     </div>
+=======
+>>>>>>> ee850f5 (Autocompletion)
 </body>
 </html>
