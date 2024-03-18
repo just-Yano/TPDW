@@ -18,13 +18,13 @@
 	<xsl:template match="country">
         <!-- On crée un tableau qui contiendra les données recherchés et qui sera directement utilisé -->
 		<table style = "border: 1px solid black">
-            <tr>
+            <tr id = "ColumnName">
                 <th> Name </th>
                 <th> Captial </th>
                 <th> Languages Spoken </th>
                 <th> Flag </th>
             </tr>
-            <tr>
+            <tr id = "ColumnData">
                 <!-- On prend le nom du pays -->
                 <td> <xsl:value-of select = "./country_name/common_name"/> </td>
                 <!-- On prend la capitale du pays -->

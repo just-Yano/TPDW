@@ -1,3 +1,28 @@
+// Charge le fichier JSON se trouvant � l'URL donn�e en param�tre et le retourne
+function chargerHttpJSON(jsonDocumentUrl) {
+
+    var httpAjax;
+
+    httpAjax = window.XMLHttpRequest ?
+        new XMLHttpRequest() :
+        new ActiveXObject('Microsoft.XMLHTTP');
+
+    if (httpAjax.overrideMimeType) {
+        httpAjax.overrideMimeType('text/xml');
+    }
+
+    // chargement du fichier JSON � l'aide de XMLHttpRequest synchrone (le 3� param�tre est d�fini � false)
+    httpAjax.open('GET', jsonDocumentUrl, false);
+    httpAjax.send();
+
+    var responseData = eval("(" + httpAjax.responseText + ")");
+
+    return responseData;
+}
+
+
+
+
 // Question 1
 function changerCouleurFontButton1() {
     document.body.style.backgroundColor = "blue"
@@ -141,6 +166,39 @@ function autocompletion(){
         elem.innerHTML += '<option value=' + datalist[i].id + '>'; 
     }
 }
+
+
+//Question 10
+
+//fonction pour activer l'affichage de la devise
+function activercurrency()
+{
+    var elements = document.querySelectorAll('svg g path');
+    //Parcours tous les pays SVG et ajoute un événement sur chacun
+    for(let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("mouseover", function() {
+            affichercurrency(this.getAttribute('id')); //On mets en paramètre le code du pays, ce sera utile pour la fonction suivante
+        })
+    }
+
+}
+
+
+function affichercurrency(code, jsonDocumentUrl = "https://restcountries.com/v2/alpha/")
+{
+    //Ajuste l'url en fonction du code du pays donné en paramètre
+    jsonDocumentUrl += code;
+    //Charger le document JSON
+    var JsonDoc = chargerHttpJSON(jsonDocumentUrl);
+    
+    //On extrait la devise
+    const currency = JsonDoc.currencies[0].name;
+
+    //Mise à jour du tableau des infos de la question 8
+    document.getElementById('ColumnName').innerHTML += "<th> Currency </th>"
+    document.getElementById('ColumnData').innerHTML += "<td>" + currency + "</td>"
+}
+
 
 
 
