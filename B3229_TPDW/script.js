@@ -114,6 +114,7 @@ function activateCountryHover() {
             this.setAttribute('style', 'fill:red')
         })
 
+        // Vérifier que le hover 
         elements[i].addEventListener("mouseleave", function() {
             this.setAttribute('style', 'fill:')  
         })
@@ -141,6 +142,8 @@ function autocompletion(){
     }
 }
 
+
+
 // Question 11
 function afficherPaysVertLangue() {
     // ajouter un nouveau eventlistener aux pays
@@ -159,27 +162,40 @@ function afficherPaysVertLangue() {
 
 //Question 12
 function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
+    
+    //Import des documents xml et xsl
     var xslDocument = chargerHttpXML(xslDocumentUrl);
     var xsltProcessor = new XSLTProcessor();
     xsltProcessor.importStylesheet(xslDocument);
-    var randomNumber = Math.floor(Math.random()*99)+1;
-    xsltProcessor.setParameter("", "random_number",randomNumber);
     var xmlDocument = chargerHttpXML(xmlDocumentUrl);
+
+    
+
+    //Générer un nombre au hasard
+    var randomNumber = Math.floor(Math.random()*99)+1;
+    console.log(randomNumber)
+
+    //Appliquer le xsl au xml
+    xsltProcessor.setParameter("", "random_number",randomNumber);
     var newXmlDocument = xsltProcessor.transformToDocument(xmlDocument);
+
+
+    //Afficher le pays qui a été tiré au sort
     var elementHtmlARemplacer = window.document.getElementById("random_pays");
     elementHtmlARemplacer.innerHTML=newXmlDocument.getElementsByTagName('element_a_recuperer')[0].innerHTML;
     
-
+    //on boucle et on parcourt tous les svg des pays pour afficher le résultat si on clique
     var elements = document.querySelectorAll('svg g path')
-
-    for(var i = 0; i < elements.length; i++) {
+    for(var i = 0; i < elements.length; i++) 
+    
+    {
         elements[i].addEventListener("click", function() {
-            var name = this.getAttribute('countryname');
+            var name = this.getAttribute('countryname'); //On obtient le nom du pays où l'on clique potentiellement
             if (name == newXmlDocument.querySelectorAll("element_a_recuperer")[0].innerHTML){
-                document.getElementById("resultatrandompays").innerHTML = "<span> Gagné! </span>";
+                document.getElementById("resultatrandompays").innerHTML = "<span> Gagné! </span>";//Le if est vérifié, c'est le bon pays
             }
             else {
-                document.getElementById("resultatrandompays").innerHTML = "<span> Perdu... </span>";
+                document.getElementById("resultatrandompays").innerHTML = "<span> Perdu... </span>";//Mauvais pays
             }
         })
     }

@@ -9,13 +9,13 @@
 <body> 
     <!-- Bouton de la question 1 -->
     <div>
-        <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Button 1</button>
+        <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Mettre la couleur de fond en bleu</button>
     </div>
 
     <!-- Bouton de la question 2 -->
     <div>
         
-        <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Button 2</button>
+        <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Mettre la couleur de fond en blanc</button>
     </div>
 
     <!-- Division de la partie de recherche du pays par code (question 3 + question 9) -->
@@ -41,7 +41,7 @@
 
     <!-- Question 4 -->
     <div>
-        <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Button 4</button>
+        <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Charger l'image svg</button>
         <div id = "ImageCercle"></div>
         <p id = "titreObjetImage"></p>
     </div>
@@ -49,7 +49,7 @@
 
     <!-- Question 5 -->
     <div>
-        <button id = "rendreSVG_cliquable" onclick="rendreSVG1cliquable()">Button 5</button>
+        <button id = "rendreSVG_cliquable" onclick="rendreSVG1cliquable()">Rendre l'image SVG cliquable</button>
     </div>
 
 
@@ -64,7 +64,7 @@
 
 
         <div id = "worldMapImage">
-           <button onclick="chargerImage2SVG()">Button 6</button> <!-- le button est remplace par la map-->
+           <button onclick="chargerImage2SVG()">Charger la carte du monde</button> <!-- le button est remplace par la map-->
         </div>
     </div>
 
@@ -74,19 +74,26 @@
 
     <!-- Question 7 -->
     <div>
-        <button onclick="countryclickable()">Activate the clickabilty of the countries</button>
+        <button onclick="countryclickable()">Rendre cliquables les pays</button>
         Country clicked :<br/>
         <b id ="CountryClicked"></b>
     </div>
 
     <!-- Question 8 -->
     <div>
-        <button onclick="activateCountryHover()">Button 8</button>
+        <button onclick="activateCountryHover()">Activer le hover</button>
     </div>
+
+
+    <!-- Question 10 -->
+    <div>
+        <button onclick="affichagecurrency()">Afficher la devise</button>
+    </div>
+
 
     <!-- Question 12 -->
     <div>
-        <button id = "RandomCountryButton" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le random pays</button>
+        <button id = "RandomCountryButton" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le pays random</button>
         Veuilliez cliquer sur <b id="random_pays">Pays à générer</b>
         <br/>
         Resultat :<br/>

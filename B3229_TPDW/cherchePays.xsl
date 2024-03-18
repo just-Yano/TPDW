@@ -9,6 +9,7 @@
         
         <element_a_recuperer>
             <ul>
+                <!-- On applique le template uniquement au pays qui a le code correspondant -->
                 <xsl:apply-templates select = "//country[country_codes/cca2 = $code]"/>
             </ul>
         </element_a_recuperer>
@@ -19,8 +20,10 @@
 
 <xsl:template match = "country">
     <LI>
+        <!-- On prend la valeur du nom -->
         <xsl:value-of select = "country_name/common_name"/>
         <br/>
+        <!-- On prend la valuer de la capitale -->
         <xsl:value-of select = "./capital"/>
     </LI>
 </xsl:template>

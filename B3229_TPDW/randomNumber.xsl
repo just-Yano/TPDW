@@ -10,7 +10,7 @@
 			<BODY bgcolor="#FFFFCC">
 				<H1>Bibliographie</H1>
 				<element_a_recuperer>
-					<!-- on cherche les références bibliographiques dont la balise contient la valeur du paramètre-->
+						<!-- On sélectionne uniquement le pays dont la position correspond au nombre tiré au hasard -->
 						<xsl:apply-templates select="//country[position() = $random_number]"/>
 				
 				</element_a_recuperer>
@@ -18,9 +18,8 @@
 		</HTML>
 	</xsl:template>
 	<xsl:template match="country">
-		
+			<!-- On prend la velur du nom dy pays uniquement -->
 			<xsl:value-of select="./country_name/common_name"/>
-    			 
   		
 	</xsl:template>
 </xsl:stylesheet>
