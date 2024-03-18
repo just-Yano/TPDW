@@ -8,7 +8,7 @@
 
 2. Dialogue paragraphs :
     request :
-    //paragraph[@type = 'dialogue]
+    //paragraph[@type = 'dialogue']
 
     result :
     Array(11) [ paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, paragraph, … ]
