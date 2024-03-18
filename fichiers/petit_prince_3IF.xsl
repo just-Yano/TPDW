@@ -66,33 +66,9 @@
 
 <h4> Fin du texte. </h4>
 <hr/>
-
-	<xsl:template match="//paragraph">
-		<div style="margin: 15px 0">
-			<p style="margin: 0 0">
-				<xsl:for-each select="phrase[@language = 'francais']">
-					<xsl:value-of select="."/>
-				</xsl:for-each>
-			</p>
-			<p style="font-style: italic; color: brown; margin: 0 0">
-				<xsl:for-each select="phrase[@language = 'hongrois']">
-					<xsl:value-of select="."/>
-				</xsl:for-each>
-			</p>
-		</div>
-	</xsl:template>
-
-<xsl:template match="//paragraph[@type = 'dialogue']">
-    <table style="border: 1px solid black; width: 100%">
-        <tr>
-            <xsl:for-each select="phrase">
-                <td style="border: 1px solid black; padding: 5px;">
-                    <xsl:value-of select="."/>
-                </td>
-            </xsl:for-each>
-        </tr>
-    </table>
 </xsl:template>
+
+
 
 <xsl:template match="paragraph[@type = 'dialogue']">
 <table align="center" width="90%">
@@ -203,4 +179,4 @@
 
 
 
-	</xsl:stylesheet>
+</xsl:stylesheet>
