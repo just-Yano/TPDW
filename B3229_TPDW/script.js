@@ -91,32 +91,29 @@ function chargerImage2SVG() {
 }
 
 // Question 7
-    // on retrouve tous les elements du fichier SVG
-function countryclickable()
-    {
-        //selection de la liste des elements SVG
-        var elements = document.querySelectorAll('svg g path');
+function countryclickable() {
+    //selection de la liste des elements SVG
+    var elements = document.querySelectorAll('svg g path');
 
-        //Parcours de la liste sélectionné et ajouter un évènement sur clique pour chacun des événements
-        for (let elem of elements){
-            elem.addEventListener("click", function(){
-                //MAJ du document HTML pour afficher le bon pays cliquer
-                document.getElementById("CountryClicked").innerHTML = this.getAttribute('countryname')})
-        }
+    //Parcours de la liste sélectionné et ajouter un évènement sur clique pour chacun des événements
+    for (let elem of elements){
+        elem.addEventListener("click", function(){
+            //MAJ du document HTML pour afficher le bon pays cliquer
+            document.getElementById("CountryClicked").innerHTML = this.getAttribute('countryname')})
     }
+}
 
 
 //Question 8
-function activatepassing()
-{
+function activateCountryHover() {
     var elements = document.querySelectorAll('svg g path');
 
-    for (let elem of elements){
-        elem.addEventListener("mouseover", function(elem){
+    for(let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("mouseover", function(){
             this.setAttribute('style', 'fill:red')
         })
 
-        elem.addEventListener("mouseleave", function(event) {
+        elements[i].addEventListener("mouseleave", function() {
             this.setAttribute('style', 'fill:')  
         })
     }
