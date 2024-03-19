@@ -100,7 +100,6 @@ function rendreSVG1cliquable() {
 
     for(var i = 0; i < elements.length; i++) {
         elements[i].addEventListener("click", function() {
-            console.log(this.getAttribute('title'))
             document.getElementById('titreObjetImage').innerHTML = this.getAttribute('title')
         })
     }
@@ -135,13 +134,18 @@ function activateCountryHover() {
 
     for(let i = 0; i < elements.length; i++) {
         // activation du hover sur les pays
+        var style; 
         elements[i].addEventListener("mouseover", function(){
+            style = this.getAttribute('style') // on cree une sauvegarde du style avant de le mettre a jour pour le rendre dans la suite
             this.setAttribute('style', 'fill:red')
         })
 
         // Vérifier que le hover 
         elements[i].addEventListener("mouseleave", function() {
-            this.setAttribute('style', 'fill:')  
+            if(style != '') // s'il y avait un style
+                this.setAttribute('style', style)  // si on passe dessus, on veut pouvoir le remettre en vert
+            else
+                this.setAttribute('style', 'fill:')
         })
 
         // activation de l'affichage du tableau lorsqu'un pays a ete clique
@@ -204,21 +208,44 @@ function affichercurrency(code, jsonDocumentUrl = "https://restcountries.com/v2/
 
 // Question 11
 function afficherPaysVertLangue() {
-    // ajouter un nouveau eventlistener aux pays
-    var elements = document.querySelectorAll('svg g path');
+    // on remets la couleur par defaut des pays qui ont ete colorie en vert (dans le cas ou on appuit sur le button de nouveau apres une premiere fois)
+    var countries = document.querySelectorAll('svg g path')
+    for(var i = 0; i < countries.length; i++) {
+        if(countries[i].getAttribute('style') == 'fill:green')
+            countries[i].setAttribute('style', 'fill:')
+    }
 
-    for(let i = 0; i < elements.length; i++) {
-        elements[i].addEventListener("click", function() {
-            var codePays = this.getAttribute('id')
-            var XMLDoc = chargerHttpXML('countriesTP.xml') // chargement du fichier des pays
-            var xpathExpr = "//country[country_codes/cca2 = '" + codePays + "']/languages/*"
-            var langues = XMLDoc.evaluate(xpathExpr, XMLDoc, null, XPathResult.ANY_TYPE, null);
-            console.log(langues)
-        })
+    var codePays = document.getElementById('countryCodeTextBox').value
+    var XMLDoc = chargerHttpXML('countriesTP.xml') // chargement du fichier des pays
+    var xpathExpr = "//country[country_codes/cca2 = '" + codePays + "']/languages/*"
+    var repLangues = XMLDoc.evaluate(xpathExpr, XMLDoc, null, XPathResult.ANY_TYPE, null)
+
+    // recuperation des langues parlees par le pays
+    var languages = []
+    var node = repLangues.iterateNext()
+    while (node) {
+        languages.push(node.textContent)
+        node = repLangues.iterateNext()
+    }
+
+    for(var i = 0; i < languages.length; i++) {
+        var xpathPays = "//country[languages/* = '" + languages[i] + "']/country_codes/cca2" // xpath pour prendre tous les codes pays qui parlent la langue en question
+        var repPays = XMLDoc.evaluate(xpathPays, XMLDoc, null, XPathResult.ANY_TYPE, null)
+
+        var pays = []
+        var node = repPays.iterateNext()
+        while (node) {
+            pays.push(node.textContent)
+            node = repPays.iterateNext()
+        }
+
+        for(var j = 0; j < pays.length; j++) 
+            document.getElementById(pays[j]).setAttribute('style', 'fill:green')
+        
     }
 }
 
-//Question 12
+// Question 12
 function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
     
     //Import des documents xml et xsl
@@ -260,8 +287,6 @@ function chargerRandomPays(xmlDocumentUrl, xslDocumentUrl){
 
     
 }
-
-
 
 function offautocompletion(){
     //Vider la datalist
