@@ -172,7 +172,6 @@ function autocompletion(){
 
 
 //Question 10
-
 //fonction pour activer l'affichage de la devise
 function activercurrency()
 {
@@ -291,5 +290,28 @@ function offautocompletion(){
     //Vider la datalist
     var elem = document.getElementById("DataList");
     elem.innerHTML = "";
+}
+
+// Question 13 NE MARCHE PAS : affiche les pays en blanc a la place de mettre les drapeau
+function afficherDrapeaux() {
+    var elements = document.querySelectorAll('svg g path');
+    for(let i = 0; i < elements.length; i++) {
+        // activation du hover sur les pays
+        var style; 
+        elements[i].addEventListener("mouseover", function(){
+            style = this.getAttribute('style') // on cree une sauvegarde du style avant de le mettre a jour pour le rendre dans la suite
+            var url = 'http://www.geonames.org/flags/x/' + this.getAttribute('id').toLowerCase() + '.gif'
+            console.log(url)
+            this.setAttribute('style', 'fill:url(' + url + ')')
+        })
+
+        // Vérifier que le hover 
+        elements[i].addEventListener("mouseleave", function() {
+            if(style == 'fill:green') // s'il y avait un style
+                this.setAttribute('style', style)  // si on passe dessus, on veut pouvoir le remettre en vert
+            else
+                this.setAttribute('style', 'fill:')
+        })
+    }
 }
 
