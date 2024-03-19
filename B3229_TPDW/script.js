@@ -127,7 +127,6 @@ function countryclickable() {
     }
 }
 
-
 // Question 8
 function activateCountryHover() {
     var elements = document.querySelectorAll('svg g path');
