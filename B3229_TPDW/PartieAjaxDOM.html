@@ -8,11 +8,13 @@
 </head>
 <body> 
     <!-- Bouton de la question 1 -->
+    <!-- Button 1: Changes the page background color to blue and the button text color to white. -->
     <div>
         <button id = "buttonCouleurFontBleu" onclick="changerCouleurFontButton1()">Mettre la couleur de fond en bleu</button>
     </div>
 
     <!-- Bouton de la question 2 -->
+    <!-- Button 2: resets the background color to white -->
     <div>
         
         <button id = "buttonCouleurFontBlanc" onclick="changerCouleurFontButton2()">Mettre la couleur de fond en blanc</button>
@@ -21,11 +23,16 @@
     <!-- Division de la partie de recherche du pays par code (question 3 + question 9) -->
     <div>
         <!-- Question 3 -->
+        <!-- Button 3 / Input field: displays the official name and the capital of the country whose code is selected in the input field. 
+        Load the XML file countriesTP.xml in ajax. Write a style sheet: cherchePays.xsl, which takes a parameter code, load it in ajax as well. 
+        This style sheet applied to the xml file: countriesTP.xml returns the searched elements
+         corresponding to the country. Use the javascript function XSLTProcessor.setParameter to pass the parameter to the stylesheet. -->
         <input id = "countryCodeTextBox" list ="DataList" type = "text"/>
-        <button id = "buttonCodeCountry" onclick="chargerPays('countriesTP.xml', 'cherchePays.xsl', 'element_a_recuperer', document.getElementById('countryCodeTextBox').value, 'capitalePays')">Rechercer le pays</button>
+        <button id = "buttonCodeCountry" onclick="chargerXMLetTransformer('countriesTP.xml', 'cherchePays.xsl', 'element_a_recuperer', document.getElementById('countryCodeTextBox').value, 'capitalePays')">Rechercer le pays</button>
         <br/>
 
         <!-- Question 9 -->
+        <!-- Button 9: complete the input field of button 3 with an autocomplete function (use a datalist) -->
         <datalist id = "DataList"></datalist>
         <button id = "ActiveAutocompletion" onclick="autocompletion()"> Activer l'autocompletion</button>
         <button id = "DesactiverAutocompletion" onclick="offautocompletion()"> Désactiver l'autocomplétion</button>
@@ -39,18 +46,23 @@
     </div>
 
     <!-- Question 4 -->
+    <!-- Button 4: load and display the svg drawing contained in the file: exemple.svg. -->
     <div>
         <button id = "buttonLoadImage" onclick="chargerImage1SVG()">Charger l'image svg</button>
         <div id = "ImageCercle"></div>
-        <p id = "titreObjetImage"></p>
+        <span id = "titreObjetImage"></span>
     </div>
 
     <!-- Question 5 -->
+    <!-- Button 5: makes the elements of the svg file "clickable" and displays the value of their attribute title when they are clicked. -->
+
     <div>
         <button id = "rendreSVG_cliquable" onclick="rendreSVG1cliquable()">Rendre l'image SVG cliquable</button>
     </div>
+    <br/>
 
     <!-- Question 6 -->
+    <!-- Button 6: load and display the world map in svg contained in the file worldHigh.svg -->
     <div id = "worldMap">
         <div id = "tableauInfo"></div>  <!-- Pas partie de la question 6, seulement le tableau d'affichage -->
                                                     <!-- des infos sur les pays de la question 8 -->
@@ -61,30 +73,44 @@
     </div>
 
     <!-- Question 7 -->
+    <!-- Button 7: makes countries clickable and displays their attribute countryname on click -->
     <div>
         <button onclick="countryclickable()">Rendre cliquables les pays</button>
+        <br/>
         Country clicked :<br/>
-        <b id ="CountryClicked"></b>
+        <b id ="CountryClicked">Pays cliqué</b>
     </div>
+    <br/>
 
     <!-- Question 8 -->
+    <!-- Button 8: capture the passing ( mouseover) and exiting ( mouseleave) event of the mouse over the countries on the map.
+     By the way: change their color and display their: name, capital, languages ​​spoken and flag in a table above the map -->
     <div>
         <button onclick="activateCountryHover()">Activer le hover</button>
     </div>
+    <br/>
 
 
     <!-- Question 10 -->
+    <!-- Button 10: complete the information displayed in button 8 with the name of the country's
+     currency (use the site https://restcountries.com/v2/alpha/{code} ) -->
     <div>
         <button onclick="activercurrency()">Afficher la devise</button>
     </div>
+    <br/>
 
 
     <!--Question 11-->
+    <!-- Color in green on the map the countries where the languages ​​of the country selected in the input field of button 3 are also spoken. -->
+
     <div>
         <button id="sameLanguageActivationButton" onclick="afficherPaysVertLangue()">Colorier les pays qui parlent la meme langue en vert</button>
     </div>
+    <br/>
+
 
     <!-- Question 12 -->
+    <!-- Button 12: Show a random country name and ask the user to click on the corresponding country on the map. Show : True or False according to the click. -->
     <div>
         <button id = "RandomCountryButton" onclick="chargerRandomPays('countriesTP.xml', 'randomNumber.xsl')">Afficher le pays random</button>
         Veuilliez cliquer sur <b id="random_pays">Pays à générer</b>
@@ -92,8 +118,12 @@
         Resultat :<br/>
         <b id = "resultatrandompays"></b>
     </div>
+    <br/>
 
     <!--Question 13-->
+    <!-- Propose an interesting visualization involving the XML file countriesTP.xml , the svg map worldHigh.svg as
+     well as enriched information from web services (for example: geonames, dbpedia, ....) -->
+
     <!--Le but etait que le hover sur un pays le colorie par son drapeau, mais pour des raison que nous ignorons, le pays se colorie en blanc-->
     <div>
         <button id="ButtonFlagBack" onclick="afficherDrapeaux()">Mettre les drapeau sur le fond des pays</button>
